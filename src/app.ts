@@ -1,27 +1,26 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import log4js from 'log4js';
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+import AdminJsRouter from "@/adminBro"
+var logger = require('morgan');
+
+var indexRouter = require('@/routes/index');
+var usersRouter = require('@/routes/users');
 
 var app = express();
+
+app.use('/admin', AdminJsRouter)
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
-}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 module.exports = app;
