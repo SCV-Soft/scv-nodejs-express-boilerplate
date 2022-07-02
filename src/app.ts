@@ -3,7 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import log4js from 'log4js';
 
-import AdminJsRouter from "@/adminBro"
+import AdminJsRouter from "@/admin"
 var logger = require('morgan');
 
 var indexRouter = require('@/routes/index');
