@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import log4js from 'log4js';
+import betterLogging from 'better-logging';
 
 import AdminJsRouter from "@/admin"
 const logger = require('morgan');
@@ -10,6 +10,8 @@ const indexRouter = require('@/routes/index');
 const usersRouter = require('@/routes/users');
 
 const app = express();
+
+betterLogging(console);
 
 app.use('/admin', AdminJsRouter)
 

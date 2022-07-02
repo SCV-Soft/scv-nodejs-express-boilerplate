@@ -6,6 +6,7 @@ import sequelizeDB from "@/sequelize";
 AdminJS.registerAdapter(require('@adminjs/sequelize'))
 AdminJS.registerAdapter(require('@adminjs/typeorm'))
 AdminJS.registerAdapter(require('@adminjs/mongoose'))
+AdminJS.registerAdapter(require('@adminjs/prisma'))
 
 // Sub module init
 //AdminJS.registerAdapter(require('@adminjs/passwords'))
