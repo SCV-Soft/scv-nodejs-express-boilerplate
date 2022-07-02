@@ -1,6 +1,6 @@
 import AdminJS from "adminjs";
 import AdminJSExpressjs from "@adminjs/express";
-import sequelizeDB from "@/sequelizeDB";
+import sequelizeDB from "@/sequelize";
 
 // DB init
 AdminJS.registerAdapter(require('@adminjs/sequelize'))

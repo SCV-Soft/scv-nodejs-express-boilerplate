@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  username String
+
+  // wallet address (0x000...)
+  address String @id @unique
+  // user handle (@user)
+  handle  String @unique
+
+  // user detail info
+  email      String?     @unique
+  comment    String?
+  sns        SNS[]
+  influencer Influencer?
+  featuredCreator FeaturedCreator?
+
+  // user uploaded image
+  profilePic    String
+  backgroundPic String
+
+  // is user first-logined
+  firstLogin Boolean @default(true)
+
+  // user type
+  type UserType @default(NORMAL)
+
+  // metadata
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+enum UserType {
+  ADMIN
+  NORMAL
+  BANNED
+}
+
+model SNS {
+  id Int @id @default(autoincrement())
+
+  // sns handle
+  handle String
+
+  // metadata
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+
+  // maty-to-one with SNSType
+  type     String
+  metadata SnsType @relation(fields: [type], references: [id])
+
+  // one-to-one with User
+  userAddress String?
+  user        User?   @relation(fields: [userAddress], references: [address])
+}
+
+model SnsType {
+  id String @id @unique
+
+  icon      String
+  name      String
+  // url Prefix (https://twitter.com/...)
+  urlPrefix String
+
+  // listed sns
+  SNS SNS[]
+
+  // metadata
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+model Influencer {
+  id Int @id @default(autoincrement())
+
+  // many-to-one with InfluencerType
+  type     Int
+  metadata InfluencerType @relation(fields: [type], references: [id])
+
+  // one-to-one with User
+  address String @unique
+  user    User   @relation(fields: [address], references: [address])
+
+  // metadata
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+model InfluencerType {
+  id Int @id @default(autoincrement())
+
+  // metadata
+  icon String
+  name String @unique
+
+  // listed influencer
+  influencer Influencer[]
+
+  // metadata
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+model FeaturedCreator {
+  id Int @id @default(autoincrement())
+
+  // one-to-one with User
+  address String @unique
+  user    User   @relation(fields: [address], references: [address])
+
+  // metadata
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}

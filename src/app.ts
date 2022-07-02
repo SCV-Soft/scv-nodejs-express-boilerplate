@@ -4,12 +4,12 @@ import cookieParser from 'cookie-parser';
 import log4js from 'log4js';
 
 import AdminJsRouter from "@/admin"
-var logger = require('morgan');
+const logger = require('morgan');
 
-var indexRouter = require('@/routes/index');
-var usersRouter = require('@/routes/users');
+const indexRouter = require('@/routes/index');
+const usersRouter = require('@/routes/users');
 
-var app = express();
+const app = express();
 
 app.use('/admin', AdminJsRouter)
 
