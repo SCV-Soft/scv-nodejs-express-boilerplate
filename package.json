@@ -1,6 +1,6 @@
 {
-  "name": "scv-nodejs",
-  "version": "0.0.0",
+  "name": "scv-nodejs-express",
+  "version": "0.0.1",
   "private": true,
   "main": "index.js",
   "scripts": {
