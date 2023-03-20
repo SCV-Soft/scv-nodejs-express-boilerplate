@@ -15,7 +15,7 @@
     "@adminjs/sequelize": "^2.0.0",
     "@adminjs/typeorm": "^2.0.0",
     "@adminjs/upload": "^2.0.1",
-    "adminjs": "^5.2.2",
+    "adminjs": "^5.10.4",
     "better-logging": "^5.0.0",
     "body-parser": "^1.19.2",
     "cookie-parser": "~1.4.4",
