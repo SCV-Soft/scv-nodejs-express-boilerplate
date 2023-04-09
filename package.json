@@ -37,7 +37,7 @@
     "sparkpost": "^2.1.4",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.2.0",
-    "typeorm": "^0.3.6"
+    "typeorm": "^0.3.14"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
