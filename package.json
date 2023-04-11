@@ -27,7 +27,7 @@
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
-    "joi": "^17.4.2",
+    "joi": "^17.9.1",
     "log4js": "^6.4.0",
     "mariadb": "^2.5.4",
     "mongoose": "^6.4.6",
